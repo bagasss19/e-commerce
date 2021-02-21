@@ -36,7 +36,8 @@ export default {
         },
          logout() {
             localStorage.clear()
-            this.$router.push({name : 'Login', path : '/login'})
+            this.$store.dispatch('custlogout')
+            this.$router.push({name : 'Home', path : '/'})
         },
         date(time) {
             return new Date(time);

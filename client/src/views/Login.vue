@@ -29,14 +29,14 @@
             name="password"
           />
         </div>
-        <button
+        <b-button
           type="submit"
-          class="btn btn-default login-popup-btn"
+          variant="dark"
           name="submit"
           value="1"
         >
           Login
-        </button>
+        </b-button>
       </form>
     </div>
 
@@ -82,20 +82,8 @@ export default {
       let payload = {
         email: this.email,
         password: this.password,
-      };
-      console.log(payload);
-
-      axios({
-        url: "/login",
-        method: "post",
-        data: {
-          email: payload.email,
-          password: payload.password,
-        },
-      }).then((data) => {
-        localStorage.token = data.data.token;
-        this.$router.push({ name: "Home" });
-      });
+      }
+      this.$store.dispatch('login', payload)
     },
   },
 };

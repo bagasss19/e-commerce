@@ -1,4 +1,5 @@
 const {Product} = require('../models')
+const uploadFile = require("../middleware/upload");
 
 class Controller {
     static read(req,res,next) {
@@ -30,14 +31,19 @@ class Controller {
         })
     }
 
-    static add (req,res,next) {
-        Product.create(req.body)
-        .then(data => {
-            res.status(201).json(data)
-        })
-        .catch(err => {
+    static async add(req, res, next) {
+        try {
+            await uploadFile(req, res);
+            if (req.file == undefined) {
+                return res.status(400).send({ message: "Please upload a file!" });
+            }
+
+            req.body.image_url = 'http://localhost:3000/upload/' + req.file.originalname
+            Product.create(req.body)
+            res.status(201).send({msg : "Success add product"})
+        } catch (err) {
             next(err)
-        })
+        }
     }
 
     static edit (req,res,next) {

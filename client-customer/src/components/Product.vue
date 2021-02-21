@@ -42,13 +42,12 @@
 </template>
 
 <script>
-import Swal from "sweetalert2";
 export default {
   name: "Product",
 
   beforeCreate() {
     this.$store.dispatch("read");
-    this.$store.dispatch("readCart");
+    // this.$store.dispatch("readCart");
   },
 
   computed: {

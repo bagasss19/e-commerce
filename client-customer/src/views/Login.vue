@@ -22,6 +22,7 @@
                </form><br>
 
                 <h5>Don't have account? Register <a href="" @click.prevent="register">here</a></h5>
+                <h5>Or back to <a href="" @click.prevent="home">home</a></h5>
             </div>
          </div>
       </div>
@@ -49,6 +50,10 @@ export default {
 
         register() {
             this.$router.push({name : 'Register', path : '/register'})
+        },
+
+        home() {
+            this.$router.push({name : 'Home', path : '/'})
         }
     }
 }

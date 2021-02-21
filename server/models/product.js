@@ -41,10 +41,6 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty : {
           args : true,
           msg : "image url cannot be empty!"
-        },
-        isUrl : {
-          args : true,
-          msg : "please input url type!"
         }
       }
     },

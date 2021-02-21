@@ -1,6 +1,7 @@
 <template>
   <section id="app">
-    <Navbar/>
+    <b-button variant="primary" @click="addForm" style="margin-top:50px;margin-bottom:50px">Add Product</b-button>
+    <div class="divider" />
     <Product :product="products.data" />
   </section>
 </template>
@@ -8,13 +9,16 @@
 <script>
 // @ is an alias to /src
 import Product from "@/components/Product.vue";
-import Navbar from "../components/Navbar";
 
 export default {
   name: "Home",
   components: {
-    Product,
-    Navbar,
+    Product
+  },
+  methods: {
+    addForm() {
+      this.$router.push({ name: "Add" });
+    },
   },
   computed: {
     products() {
