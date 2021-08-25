@@ -33,6 +33,7 @@ class Controller {
 
     static async add(req, res, next) {
         try {
+            console.log('AAAAAAAAAAAA')
             await uploadFile(req, res);
             if (req.file == undefined) {
                 return res.status(400).send({ message: "Please upload a file!" });

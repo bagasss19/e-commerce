@@ -4,6 +4,7 @@ const {generateToken} = require('../helper/jwt')
 
 class Controller {
     static login(req,res,next) {
+        console.log("ASHUPPPPP")
         const { email, password } = req.body
         User.findOne({
             where : {
@@ -25,6 +26,7 @@ class Controller {
             res.status(200).json({token})
         })
         .catch(err => {
+            console.log(err)
             next(err)
         })
     }
